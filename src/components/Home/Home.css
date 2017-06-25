@@ -1,0 +1,52 @@
+.home {
+    background-image: url('./bg.jpg');
+    background-size: cover;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.btn-page {
+    padding: 10px 70px;
+    border: 2px solid white;
+    border-radius: 50px;
+    background: transparent;
+
+}
+
+.animate {
+    animation: moveDown 1.6s ease-in-out 0.2s backwards;
+}
+
+
+.animate-logo {
+    animation: rollIn 2s;;
+}
+
+
+@keyframes rollIn {
+  from {
+    opacity: 0;
+    transform: translate3d(-100%, 0, 0) rotate3d(0, 0, 1, -120deg);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+
+
+@keyframes moveDown{
+    0% { 
+        transform: translateY(-40px); 
+        opacity: 0;
+    }
+    100% { 
+        transform: translateY(0px);  
+        opacity: 1;
+    }
+}
