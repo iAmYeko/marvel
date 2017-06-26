@@ -50,3 +50,30 @@
         opacity: 1;
     }
 }
+
+@media(max-width: 850px) {
+
+	img {
+        width: 594px;
+        height: 244px;
+    }
+
+}
+
+@media(max-width: 480px) {
+
+	img {
+        width: 220px;
+        height: 97px;
+    }
+
+    .btn-page {
+    width: 250px;
+    padding: 10px 30px;
+    border: 2px solid white;
+    border-radius: 50px;
+    background: transparent;
+
+}
+
+}

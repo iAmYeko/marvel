@@ -91,9 +91,35 @@ constructor() {
                                         />
 
                                     <div> 
-                                        <button type="button" className="btn btn-primary btn-lg" onClick={this.addCharacter} data-index={i}>
+                                        <button type="button" className="btn btn-primary btn-md" onClick={this.addCharacter} data-index={i}>
+                                            <Glyphicon className="glyph" glyph="floppy-save"></Glyphicon>
                                             Save Character
                                         </button>
+                                        <button type="button" className="btn btn-primary btn-md" data-toggle="modal" data-target=".bs-example-modal-lg">
+                                            <Glyphicon className="glyph" glyph="user"></Glyphicon>
+                                            View Bio
+                                        </button>
+
+                                        <div className="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel">
+                                        <div className="modal-dialog modal-lg" role="document">
+                                            <div className="modal-content">
+                                                <div className="zoomIn search-results" data-index={i} >
+                                                    <img 
+                                                        alt="Profile"
+                                                        class="profile-img"
+                                                        src={elem.image_url_lge}
+                                                    />
+                                                    <p className="in-saved">{elem.__Birthday }</p> 
+                                                    <p className="in-saved">{elem.info}</p>   
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" className="btn-profile-dos btn" data-dismiss="modal">Close</button>
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
+                                        
+                                        </div>
 
                                                     
                                         </div>
@@ -121,7 +147,7 @@ constructor() {
                     <div className="Profile">
                         <div className="results">{
                             searchResults
-                            }</div>
+                        }</div>
                             
                     </div>
                 </div>

@@ -17,6 +17,7 @@ class Search extends Component {
         }
         this.getSavedList = this.getSavedList.bind(this);
         this.removeCharacter = this.removeCharacter.bind(this);
+        this.getSavedListDos = this.getSavedList.bind(this);
     }
 
     removeCharacter(event)
@@ -36,6 +37,31 @@ class Search extends Component {
                     src={elem.image_url_med}
                 />
                 <button className="btn-profile" key={i} onClick={()=>{this.props.removeCharacter(i)}}> Remove </button>
+                
+
+                
+            </div>
+                                
+        )
+        } )
+    }
+
+    
+
+    getSavedf(){
+        return this.props.characterList.map((elem, i) => {
+        return (
+            <div data-index={i} className="roll-in search-results" key={i} onClick={this.removeCharacter}>
+                <img 
+                    alt="Profile"
+                    className="saved-img"
+                    src={elem.image_url_med}
+                />
+                <h2 className="in-saved">{elem.info}</h2>  
+                
+                <button className="btn-profile" key={i} onClick={()=>{this.props.removeCharacter(i)}}> Remove </button>
+                
+                
             </div>
                                 
         )
@@ -46,6 +72,7 @@ class Search extends Component {
 
         
         const list = this.getSavedList();
+        const listDos = this.getSavedListDos();
         return (
         <div>
             <button className="btn-myc btn btn-primary" type="button" data-toggle="collapse" data-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
@@ -57,8 +84,7 @@ class Search extends Component {
                      {list}
                 </div>
             </div>
-            </div>
-
+        </div>
 
             <FormGroup id="search">
                     <InputGroup>
@@ -75,13 +101,6 @@ class Search extends Component {
                     </InputGroup>
                      
             </FormGroup>
-            
-
-            
-                
-
-
-       
             
         </div>
 
