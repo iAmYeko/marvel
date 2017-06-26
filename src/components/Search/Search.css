@@ -45,3 +45,23 @@
 .form-control:-moz-placeholder { color: white; }
 .form-control::-moz-placeholder { color: white; }
 .form-control:-ms-input-placeholder { color: white; }
+
+.in-saved {
+    color: #3a3a3a;
+}
+
+.saved-img {
+    width: 80px;
+    height: 80px;
+    border-radius: 100px;
+    margin: 20px;
+}
+
+.collapse.in {
+    background: transparent;
+}
+
+.well {
+    background: transparent;
+    border: 2px solid white;
+}

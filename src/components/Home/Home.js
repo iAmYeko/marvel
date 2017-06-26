@@ -17,7 +17,7 @@ class Home extends Component {
 
 render() {
     return (
-         <div className="home">
+         <div  className="home">
              <img className="animate-logo" src={logo} />
             <a href="#search"> <button  type="button" className="animate btn-page btn btn-primary btn-lg">START SEARCHING</button></a>
         </div>

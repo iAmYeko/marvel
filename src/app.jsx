@@ -12,13 +12,15 @@ constructor() {
     super();
     this.state={
         searchResults: [],
-        characterList: []
+        characterList: [],
+        searchQueryMessage : ""
         
 
     }
     this.search = this.search.bind(this)
     this.addCharacter = this.addCharacter.bind(this)
     this.removeCharacter =this.removeCharacter.bind(this);
+    this.getSearchResults = this.getSearchResults.bind(this);
 }
 
 
@@ -34,9 +36,18 @@ constructor() {
             FETCH_URL = FETCH_URL + `/?access_token=${response.data.access_token}`
             console.log(FETCH_URL)
             var promise = axios.get(FETCH_URL).then((response) => {
+                if(response.data.length === undefined){
+                    this.setState({
+                        searchResults: [],
+                        searchQueryMessage: "No Characters Found"                        
+                        
+                    })
+                }
+                else{
                 this.setState({
                     searchResults: response.data
                 })
+            }
             } )
         })
         
@@ -53,15 +64,49 @@ constructor() {
    }
 
    removeCharacter(i){
-       debugger;
-        const array = this.state.characterList.splice(i,1);
+       
+        const array = this.state.characterList;
+        array.splice(i,1);
         this.setState({
             characterList: array
         })
    }
+
+   getSearchResults(){
+
+       if(this.state.searchResults.length === 0){
+           return (<h3>{this.state.searchQueryMessage}</h3>);
+       }
+       else{
+        return this.state.searchResults.map((elem, i) => {
+                                return (
+                                    <div className="roll-in search-results">
+                                        <h2>{elem.name_first}</h2>
+                                        <p>aka: {elem.name_alt}</p>
+                                        <p>Japanese Name: {elem.name_japanese} </p>
+                                        <img 
+                                            alt="Profile"
+                                            className="profile-img"
+                                            src={elem.image_url_lge}
+                                        />
+
+                                    <div> 
+                                        <button type="button" className="btn btn-primary btn-lg" onClick={this.addCharacter} data-index={i}>
+                                            Save Character
+                                        </button>
+
+                                                    
+                                        </div>
+                                    </div>
+                                    
+                                )
+                            } )
+       }
+   }
         
 
     render(){
+        const searchResults = this.getSearchResults();
         return(
             <div className="App">
                 <Home />
@@ -74,29 +119,9 @@ constructor() {
                     </div>
                     
                     <div className="Profile">
-                        <div className="results">{this.state.searchResults.map((elem, i) => {
-                            return (
-                                <div className="roll-in search-results">
-                                    <h2>{elem.name_first}</h2>
-                                    <p>aka: {elem.name_alt}</p>
-                                    <p>Japanese Name: {elem.name_japanese} </p>
-                                    <img 
-                                        alt="Profile"
-                                        className="profile-img"
-                                        src={elem.image_url_lge}
-                                    />
-
-                                <div> 
-                                    <button type="button" className="btn btn-primary btn-lg" onClick={this.addCharacter} data-index={i}>
-                                                Save Character
-                                                </button>
-
-                                                
-                                    </div>
-                                </div>
-                                
-                            )
-                            } )}</div>
+                        <div className="results">{
+                            searchResults
+                            }</div>
                             
                     </div>
                 </div>

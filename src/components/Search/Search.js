@@ -21,22 +21,26 @@ class Search extends Component {
 
     removeCharacter(event)
     {
-        debugger;
         const i = parseInt(event.target.dataset.index);
         this.props.removeCharacter.bind(this,i);
     }
 
-getSavedList(){
-             return this.props.characterList.map((elem, i) => {
-                            return (
-                                <div data-index={i} className="roll-in search-results" key={i} onClick={this.removeCharacter}>
-                                    <h2>{elem.name_first}</h2>  
-                                    <button data-index={i} key={i} onClick={this.removeCharacter}>Remove </button>
-                                </div>
+    getSavedList(){
+        return this.props.characterList.map((elem, i) => {
+        return (
+            <div data-index={i} className="roll-in search-results" key={i} onClick={this.removeCharacter}>
+                <h2 className="in-saved">{elem.name_first}</h2>  
+                <img 
+                    alt="Profile"
+                    className="saved-img"
+                    src={elem.image_url_med}
+                />
+                <button className="btn-profile" key={i} onClick={()=>{this.props.removeCharacter(i)}}> Remove </button>
+            </div>
                                 
-                            )
-                            } )
-        }
+        )
+        } )
+    }
    
     render() {
 
@@ -49,9 +53,9 @@ getSavedList(){
             </button>
             <div className="collapse" id="collapseExample">
             <div className="well">
-                 <div className="results">{
-                    list 
-                    }</div>
+                 <div className="results">
+                     {list}
+                </div>
             </div>
             </div>
 
